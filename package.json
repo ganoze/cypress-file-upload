@@ -4,7 +4,7 @@
   "description": "A Cypress command for file upload",
   "main": "dist/bundle.js",
   "engines": {
-    "node": ">=8.2.1"
+    "node": ">=20.0.0"
   },
   "scripts": {
     "build": "microbundle build -i src/index.js -f cjs --target node --strict --no-compress --no-generate-types",
@@ -31,20 +31,20 @@
   },
   "homepage": "https://github.com/abramenal/cypress-file-upload#readme",
   "devDependencies": {
-    "eslint": "^7.18.0",
-    "eslint-config-airbnb-base": "^14.0.0",
-    "eslint-config-prettier": "^7.1.0",
-    "eslint-plugin-cypress": "^2.11.2",
+    "eslint": "^9.39.1",
+    "eslint-config-airbnb-extended": "^2.3.2",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-cypress": "^5.2.0",
     "eslint-plugin-es": "^4.1.0",
-    "eslint-plugin-import": "^2.15.0",
-    "eslint-plugin-jsx-a11y": "^6.4.1",
-    "eslint-plugin-prettier": "^3.3.1",
-    "eslint-plugin-react": "^7.22.0",
-    "husky": "^4.3.8",
-    "lint-staged": "^10.5.3",
-    "microbundle": "^0.13.0",
-    "mime": "^2.5.0",
-    "prettier": "^2.2.1"
+    "eslint-plugin-import": "^2.32.0",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "eslint-plugin-prettier": "^5.5.4",
+    "eslint-plugin-react": "^7.37.5",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.2.6",
+    "microbundle": "^0.15.1",
+    "mime": "^4.1.0",
+    "prettier": "^3.6.2"
   },
   "peerDependencies": {
     "cypress": ">3.0.0"
