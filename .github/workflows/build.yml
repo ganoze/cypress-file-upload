@@ -12,10 +12,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2.5.1
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v6
         with:
-          node-version: 14.x
+          node-version: 24
       - run: npm ci
       - run: npm run lint
       - run: npm run build
@@ -24,7 +24,7 @@ jobs:
     name: E2E tests (Chrome & Electron)
     needs: [build]
     runs-on: ubuntu-latest
-    container: cypress/browsers:node14.15.0-chrome86-ff82
+    container: cypress/browsers:latest
 
     env:
       app_host: 'http://localhost:3000'
@@ -38,12 +38,12 @@ jobs:
         cwd: [angularjs-ng-file-upload, react-dropzone, react-html5-input, shadow-dom-native]
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v5
       - uses: gerred/actions/current-time@master
       - run: npm ci
       - run: npm run build
       - name: Install dependencies and verify Cypress
-        uses: cypress-io/github-action@v2
+        uses: cypress-io/github-action@v6
         with:
           working-directory: ./recipes/${{ matrix.cwd }}
           runTests: false
@@ -51,7 +51,7 @@ jobs:
         run: npm start & # & helps to run daemonized app
         working-directory: ./recipes/${{ matrix.cwd }}
       - name: Run Chrome tests
-        uses: cypress-io/github-action@v2
+        uses: cypress-io/github-action@v6
         with:
           working-directory: ./recipes/${{ matrix.cwd }}
           install: false
@@ -62,7 +62,7 @@ jobs:
           headless: false
           wait-on: ${{ env.app_host }}
       - name: Run Chrome headless tests
-        uses: cypress-io/github-action@v2
+        uses: cypress-io/github-action@v6
         with:
           working-directory: ./recipes/${{ matrix.cwd }}
           install: false
@@ -73,7 +73,7 @@ jobs:
           headless: true
           wait-on: ${{ env.app_host }}
       - name: Run Electron tests
-        uses: cypress-io/github-action@v2
+        uses: cypress-io/github-action@v6
         with:
           working-directory: ./recipes/${{ matrix.cwd }}
           install: false
@@ -84,7 +84,7 @@ jobs:
           headless: false
           wait-on: ${{ env.app_host }}
       - name: Run Electron headless tests
-        uses: cypress-io/github-action@v2
+        uses: cypress-io/github-action@v6
         with:
           working-directory: ./recipes/${{ matrix.cwd }}
           install: false
@@ -100,7 +100,7 @@ jobs:
     needs: [build]
     runs-on: ubuntu-latest
     container:
-      image: cypress/browsers:node14.16.0-chrome89-ff86
+      image: cypress/browsers:latest
       options: --user 1001
 
     env:
@@ -114,12 +114,12 @@ jobs:
         cwd: [angularjs-ng-file-upload, react-dropzone, react-html5-input, shadow-dom-native]
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v5
       - uses: gerred/actions/current-time@master
       - run: npm ci
       - run: npm run build
       - name: Install dependencies and verify Cypress
-        uses: cypress-io/github-action@v2
+        uses: cypress-io/github-action@v6
         with:
           working-directory: ./recipes/${{ matrix.cwd }}
           runTests: false
@@ -127,7 +127,7 @@ jobs:
         run: npm start & # & helps to run daemonized app
         working-directory: ./recipes/${{ matrix.cwd }}
       - name: Run Firefox tests
-        uses: cypress-io/github-action@v2
+        uses: cypress-io/github-action@v6
         with:
           working-directory: ./recipes/${{ matrix.cwd }}
           install: false
@@ -137,7 +137,7 @@ jobs:
           headless: false
           wait-on: ${{ env.app_host }}
       - name: Run Firefox headless tests
-        uses: cypress-io/github-action@v2
+        uses: cypress-io/github-action@v6
         with:
           working-directory: ./recipes/${{ matrix.cwd }}
           install: false
